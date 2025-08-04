@@ -1,6 +1,8 @@
+/* general global settings */
+
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -13,9 +15,10 @@ body {
     background: #ffffff;
     font-family: "Roboto", sans-serif;
     width: 100%;
+    min-height: 100vh;
     overflow: hidden;
 }
-
+/* header */
 header {
     position: absolute;
     top: 0;
@@ -24,7 +27,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 100px;
+    padding: 20px 30px;
     background: transparent;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -79,7 +82,7 @@ header.active {
 
 .search {
     position: relative;
-    width: 280px;
+    width: 300px;
     height: 40px;
     transition: 0.5s;
 }
@@ -94,12 +97,13 @@ header.active {
     background: transparent;
     border: none;
     border-bottom: 1px solid #000000;
+    outline: none;
     padding: 0 10px 0 15px;
 }
 
 .search input::placeholder {
     color: #000000;
-    text-decoration: none;
+    text-transform: uppercase;
     font-weight: 350;
 }
 
@@ -114,7 +118,7 @@ header.active {
     cursor: pointer;
     border-left: 1px solid #000000;
 }
-
+/* banner */
 .banner {
     position: relative;
     width: 100%;
@@ -153,12 +157,16 @@ header.active {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: scale(0) translate(-50%, -50%);
     width: 60vw;
     z-index: 1100;
     transition: ease-in-out 3s;
     opacity: 0;
     visibility: hidden;
+}
+.bg-slide .content h1{
+    font-size: 8em;
+    text-transform: uppercase;
 }
 
 .bg-slide .content p {
@@ -323,7 +331,8 @@ header.active {
 .share a ioc-icon {
     font-size: 1.8em;
 }
-.lead{
+
+.lead {
     position: absolute;
     bottom: 0;
     z-index: 1000;
@@ -333,39 +342,248 @@ header.active {
     justify-content: center;
     align-items: center;
 }
-.move-down{
+
+.move-down {
     position: absolute;
     z-index: 1100;
     color: #111111;
 }
+
 .move-down ion-icon {
     font-size: 1.5em;
 }
 
-@keyframes flink{
+@keyframes flink {
     from {
-        opacity: 1;;
+        opacity: 1;
+        ;
     }
+
     to {
         opacity: 0;
     }
 }
-.lead svg{
-     font-family: 'Great Vibes', cursive;
-     position: absolute;
-     z-index: 1100;
-     fill: currentColor;
-     height: auto;
-     max-width: 20vmin;
-     transform-origin: center;
-     width: 66%;
-     animation: spin 10s linear infinite;
+
+.lead svg {
+    font-family: 'Great Vibes', cursive;
+    position: absolute;
+    z-index: 1100;
+    fill: currentColor;
+    height: auto;
+    max-width: 20vmin;
+    transform-origin: center;
+    width: 66%;
+    animation: spin 10s linear infinite;
 }
-@keyframes spin{
-    from{
+
+@keyframes spin {
+    from {
         transform: rotateZ(0);
     }
-    to{
+
+    to {
         transform: rotateZ(360deg);
     }
+}
+
+section {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    top: 100vh;
+    bottom: 0;
+    background: #ffffff;
+    transition: ease-in-out 1s;
+    transform-origin: bottom;
+    z-index: 1100;
+    opacity: 0;
+}
+
+section::-webkit-scrollbar {
+    display: none;
+}
+
+section.section-show {
+    padding: 150px 100px 100px;
+    top: 0;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: visible;
+    opacity: 1;
+
+}
+
+section h1 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: 4em;
+    letter-spacing: 1px;
+    margin-bottom: 150px;
+    text-align: center;
+}
+
+section h4 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 300;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-weight: 300;
+    color: #111111;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.about h4::first-letter {
+    color: var(--primary);
+    font-size: 2em;
+}
+
+.about::before {
+    position: absolute;
+    content: '';
+    left: 50%;
+    transform: translateX(-50%);
+    top: 250px;
+    height: 100px;
+    width: 2px;
+    background: #111111;
+}
+
+.about .img-box {
+    position: relative;
+}
+
+.about .img-box img {
+    max-width: 450px;
+}
+
+.about .img-box .corner-img {
+    position: absolute;
+    width: 15vw;
+    right: 10px;
+    bottom: -50px;
+
+}
+
+.section-bg-img {
+    position: absolute;
+    bottom: -300px;
+    right: 10px;
+    opacity: 0.1;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.section-btn {
+    position: relative;
+    text-decoration: none;
+    color: #111111;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.section-btn:hover {
+    color: var(--primary);
+}
+
+.section-btn::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: -10px;
+    width: 85%;
+    height: 1px;
+    background: #111111;
+    transition: 0.3s;
+}
+
+.section-btn:hover::before {
+    left: 20%;
+    background: var(--primary);
+}
+
+.services::before {
+    position: absolute;
+    content: '';
+    left: 50%;
+    transform: translateX(-50%);
+    top: 250px;
+    height: 100px;
+    width: 2px;
+    background: #111111;
+}
+
+.card {
+    position: relative;
+    margin: 20px 0;
+    width: 350px;
+    height: 500px;
+    background: #ffffff;
+    border: none;
+    transform-style: preserve-3d;
+    transform: perspective(2000px);
+    transition: ease-in-out 1s;
+    border-radius: 0;
+    box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.25);
+}
+
+.card:hover {
+    transform: perspective(2000px) rotate(-10deg);
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+}
+
+.card .img-box {
+    position: relative;
+    border-style: none;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+    z-index: 1;
+    transition: 1s;
+}
+
+.card:hover .img-box {
+    transform: rotateY(-130deg);
+}
+
+.card .img-box img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 50px 20px 20px;
+}
+.card .details::before{
+    position: absolute;
+    content: '';
+    color: #ffffff;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: url('./images/bg-tree.png') no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.1;
+}
+.card .details::first-letter {
+    color: var(--primary);
+    font-size: 1.5em;
 }
