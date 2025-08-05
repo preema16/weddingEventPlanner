@@ -38,6 +38,7 @@ const sectionNavigator = name => {
     });
 };
 
+
 //navigation to sections
 window.addEventListener('load', () => {   
     const navList = document.querySelectorAll('.nav-btn');
